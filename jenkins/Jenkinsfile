@@ -12,16 +12,7 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
             post {
-                success  {
-                    emailext  (
-                to: "ashokreset@gmail.com",
-                subject: "Job was Successful: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: """=== Job Details as Below === 
-                  Job Name = '${env.JOB_NAME}'
-                  Job Build Number = '${env.BUILD_NUMBER}'
-                  Build Info @ '${env.BUILD_URL}' 
-                  """
-            )
+                success  {slackSend (message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
                 }
                 failure  {
                     emailext  (
