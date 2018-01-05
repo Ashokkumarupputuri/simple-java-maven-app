@@ -1,4 +1,4 @@
-properties([parameters([string(name: 'Bucket_Name', defaultValue: pack-pack/'Jenkins-wars')])])
+properties([parameters([string(name: 'Bucket_Name', defaultValue: 'pack-pack/Jenkins-wars')])])
 pipeline {
     agent {
         docker {
