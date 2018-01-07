@@ -1,5 +1,4 @@
-properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'packer-packer'),string(name: 'Bucket_Name2', defaultValue: 'pack-pack')])]
-
+properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'packer-packer'),string(name: 'Bucket_Name2', defaultValue: 'pack-pack')])])
 pipeline {
     agent {
         docker {
