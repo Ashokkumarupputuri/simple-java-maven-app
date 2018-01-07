@@ -1,5 +1,5 @@
 properties([parameters([string(name: 'Bucket_Name', defaultValue: 'packer-packer')])])
-properties([parameters([string(name: 'Bucket_Name', defaultValue: 'pack-pack')])])
+properties([parameters([string(name: 'Bucket_Names', defaultValue: 'pack-pack')])])
 pipeline {
     agent {
         docker {
@@ -48,7 +48,7 @@ pipeline {
         }
         stage('Store-in-S3b') {
             steps {
-                sh "aws s3 cp /var/lib/jenkins/workspace/ash/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name}/"
+                sh "aws s3 cp /var/lib/jenkins/workspace/ash/target/my-app-1.0-SNAPSHOT.jar s3://${params.Buckets_Name}/"
             }
         }
     }
