@@ -1,4 +1,4 @@
-properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'packer-packer'),string(name: 'Bucket_Name2', defaultValue: 'pack-pack'),string(name: 'Bucket_Name3', defaultValue: 'none')])])
+properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'packer-packer'),string(name: 'Bucket_Name2', defaultValue: 'pack-pack'),string(name: 'Bucket_Name3', defaultValue: 'dock-dock')])])
 pipeline {
     agent {
         docker {
@@ -52,7 +52,6 @@ pipeline {
             }
         }
         stage('Store-in-S3c') {
-            Bucket_Name3 = 'dock-dock'
             steps {
                 sh "aws s3 cp /var/lib/jenkins/workspace/ash/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name3}/"
             }
