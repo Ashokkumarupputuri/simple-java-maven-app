@@ -53,9 +53,7 @@ pipeline {
         }
         stage('Store-in-S3c') {
             steps {
-                script {
-                    Bucket_Name3 = string('dock-dock')
-                }
+                sh ${parms.Bucket_Name3} = 'dock-dock'
                 sh "aws s3 cp /var/lib/jenkins/workspace/ash/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name3}/"
             }
         }
